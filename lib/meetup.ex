@@ -1,6 +1,6 @@
 defmodule Meetup do
   @moduledoc """
-  Documentation for Meetup.
+  API wrapper for Meetup.com public API.
   """
 
   @base_url = "https://api.meetup.com"
