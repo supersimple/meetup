@@ -8,7 +8,7 @@ defmodule Meetup.V3.Venues do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/venues/#list
   """
-  @spec index(binary(), map()) :: tuple()
+  @spec index(String.t(), map()) :: tuple()
   def index(urlname, params) do
     method = :get
     path = "#{urlname}/venues"
@@ -19,7 +19,7 @@ defmodule Meetup.V3.Venues do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/venues/#create
   """
-  @spec create(binary(), map()) :: tuple()
+  @spec create(String.t(), map()) :: tuple()
   def create(urlname, params) do
     method = :post
     path = "#{urlname}/venues"

@@ -8,7 +8,7 @@ defmodule Meetup.V3.Rsvps do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/events/:event_id/rsvps/#list
   """
-  @spec index(binary(), integer(), map()) :: tuple()
+  @spec index(String.t(), integer(), map()) :: tuple()
   def index(urlname, event_id, params) do
     method = :get
     path = "#{urlname}/events/#{event_id}/rsvps"
@@ -19,7 +19,7 @@ defmodule Meetup.V3.Rsvps do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/events/:event_id/rsvps/
   """
-  @spec create_or_update(binary(), integer(), map()) :: tuple()
+  @spec create_or_update(String.t(), integer(), map()) :: tuple()
   def create_or_update(urlname, event_id, params) do
     method = :post
     path = "#{urlname}/events/#{event_id}/rsvps"

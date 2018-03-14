@@ -8,6 +8,7 @@ defmodule Meetup.V3.Batch do
   For details, see:
   https://www.meetup.com/meetup_api/docs/batch/
   """
+  @spec batch() :: tuple()
   def batch do
     method = :post
     path = "batch"
