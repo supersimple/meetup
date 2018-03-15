@@ -9,8 +9,8 @@ defmodule Meetup.V3.Groups do
   https://www.meetup.com/meetup_api/docs/:urlname/#get
   """
   def show(urlname, params) do
-    method = :get
     path = "#{urlname}"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -24,8 +24,8 @@ defmodule Meetup.V3.Groups do
   """
   @spec edit(String.t(), map()) :: tuple()
   def edit(urlname, params) do
-    method = :post
     path = "#{urlname}"
+    Meetup.post(path, params)
   end
 
   @doc """
@@ -33,8 +33,8 @@ defmodule Meetup.V3.Groups do
   """
   @spec similar_groups(String.t()) :: tuple()
   def similar_groups(urlname) do
-    method = :get
     path = "#{urlname}/similar_groups"
+    Meetup.get(path, %{})
   end
 
   @doc """
@@ -45,9 +45,10 @@ defmodule Meetup.V3.Groups do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/topics/#add
   """
-  @spec topics(atom(), string(), map()) :: tuple()
+  @spec topics(atom(), String.t(), map()) :: tuple()
   def topics(:post, urlname, params) do
     path = "#{urlname}/topics"
+    Meetup.post(path, params)
   end
 
   @doc """
@@ -58,9 +59,10 @@ defmodule Meetup.V3.Groups do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/topics/#remove
   """
-  @spec topics(atom(), string(), map()) :: tuple()
+  @spec topics(atom(), String.t(), map()) :: tuple()
   def topics(:delete, urlname, params) do
     path = "#{urlname}/topics"
+    Meetup.delete(path, params)
   end
 
   @doc """
@@ -70,8 +72,8 @@ defmodule Meetup.V3.Groups do
   """
   @spec find(map()) :: tuple()
   def find(params) do
-    method = :get
     path = "find/groups"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -81,8 +83,8 @@ defmodule Meetup.V3.Groups do
   """
   @spec recommended(map()) :: tuple()
   def recommended(params) do
-    method = :get
     path = "recommended/groups"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -90,8 +92,8 @@ defmodule Meetup.V3.Groups do
   """
   @spec recommended_ignore(String.t()) :: tuple()
   def recommended_ignore(urlname) do
-    method = :post
     path = "recommended/groups/ignores/#{urlname}"
+    Meetup.post(path, %{})
   end
 
   @doc """
@@ -103,7 +105,7 @@ defmodule Meetup.V3.Groups do
   """
   @spec my_groups(map()) :: tuple()
   def my_groups(params) do
-    method = :get
     path = "self/groups"
+    Meetup.get(path, params)
   end
 end

@@ -14,8 +14,8 @@ defmodule Meetup.V3.Notifications do
   """
   @spec index(map()) :: tuple()
   def index(params) do
-    method = :get
     path = "notifications"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -24,9 +24,9 @@ defmodule Meetup.V3.Notifications do
   https://www.meetup.com/meetup_api/docs/notifications/clicked/
   """
   @spec clicked(integer()) :: tuple()
-  def clicked(notif_id) do
-    method = :post
+  def clicked(params) do
     path = "notifications/clicked"
+    Meetup.post(path, params)
   end
 
   @doc """
@@ -36,7 +36,7 @@ defmodule Meetup.V3.Notifications do
   """
   @spec read(map()) :: tuple()
   def read(params) do
-    method = :post
     path = "notifications/read"
+    Meetup.post(path, params)
   end
 end

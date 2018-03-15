@@ -10,8 +10,8 @@ defmodule Meetup.V3.Profiles do
   """
   @spec membership_approvals(String.t(), map()) :: tuple()
   def membership_approvals(urlname, params) do
-    method = :post
     path = "#{urlname}/member/approvals"
+    Meetup.post(path, params)
   end
 
   @doc """
@@ -21,8 +21,8 @@ defmodule Meetup.V3.Profiles do
   """
   @spec membership_decline(String.t(), map()) :: tuple()
   def membership_decline(urlname, params) do
-    method = :delete
     path = "#{urlname}/member/approvals"
+    Meetup.delete(path, params)
   end
 
   @doc """
@@ -32,8 +32,8 @@ defmodule Meetup.V3.Profiles do
   """
   @spec members_list(String.t(), map()) :: tuple()
   def members_list(urlname, params) do
-    method = :get
     path = "#{urlname}/members"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -43,8 +43,8 @@ defmodule Meetup.V3.Profiles do
   """
   @spec members_join(String.t(), map()) :: tuple()
   def members_join(urlname, params) do
-    method = :post
     path = "#{urlname}/members"
+    Meetup.post(path, params)
   end
 
   @doc """
@@ -56,8 +56,8 @@ defmodule Meetup.V3.Profiles do
   """
   @spec group_profile(String.t(), integer(), map()) :: tuple()
   def group_profile(urlname, member_id, params) do
-    method = :get
     path = "#{urlname}/members/#{member_id}"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -69,8 +69,8 @@ defmodule Meetup.V3.Profiles do
   """
   @spec edit_member_profile(String.t(), integer(), map()) :: tuple()
   def edit_member_profile(urlname, member_id, params) do
-    method = :patch
     path = "#{urlname}/members/#{member_id}"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -80,8 +80,8 @@ defmodule Meetup.V3.Profiles do
   """
   @spec delete_member_profile(String.t(), integer(), map()) :: tuple()
   def delete_member_profile(urlname, member_id, params) do
-    method = :delete
     path = "#{urlname}/members/#{member_id}"
+    Meetup.delete(path, params)
   end
 
   @doc """
@@ -93,8 +93,8 @@ defmodule Meetup.V3.Profiles do
   """
   @spec members_search(String.t(), map()) :: tuple()
   def members_search(urlname, params) do
-    method = :get
     path = "find/#{urlname}/members"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -106,8 +106,8 @@ defmodule Meetup.V3.Profiles do
   """
   @spec member_profile(integer(), map()) :: tuple()
   def member_profile(member_id, params) do
-    method = :get
     path = "members/#{member_id}"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -117,7 +117,7 @@ defmodule Meetup.V3.Profiles do
   """
   @spec member_profile_edit(integer(), map()) :: tuple()
   def member_profile_edit(member_id, params) do
-    method = :patch
     path = "members/#{member_id}"
+    Meetup.patch(path, params)
   end
 end

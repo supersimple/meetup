@@ -10,7 +10,7 @@ defmodule Meetup.V3.Batch do
   """
   @spec batch() :: tuple()
   def batch do
-    method = :post
     path = "batch"
+    Meetup.post(path, %{})
   end
 end

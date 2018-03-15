@@ -10,8 +10,8 @@ defmodule Meetup.V3.Venues do
   """
   @spec index(String.t(), map()) :: tuple()
   def index(urlname, params) do
-    method = :get
     path = "#{urlname}/venues"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -21,8 +21,8 @@ defmodule Meetup.V3.Venues do
   """
   @spec create(String.t(), map()) :: tuple()
   def create(urlname, params) do
-    method = :post
     path = "#{urlname}/venues"
+    Meetup.post(path, params)
   end
 
   @doc """
@@ -32,8 +32,8 @@ defmodule Meetup.V3.Venues do
   """
   @spec find(map()) :: tuple()
   def find(params) do
-    method = :get
     path = "find/venues"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -44,7 +44,7 @@ defmodule Meetup.V3.Venues do
   """
   @spec recommended(map()) :: tuple()
   def recommended(params) do
-    method = :get
     path = "recommended/venues"
+    Meetup.get(path, params)
   end
 end

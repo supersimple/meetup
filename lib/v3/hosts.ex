@@ -8,9 +8,9 @@ defmodule Meetup.V3.Hosts do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/events/:event_id/hosts/
   """
-  @spec show(String.t(), integer(), map()) :: tuple()
+  @spec show(String.t(), String.t(), map()) :: tuple()
   def show(urlname, event_id, params) do
-    method = :get
     path = "#{urlname}/events/#{event_id}/hosts"
+    Meetup.get(path, params)
   end
 end

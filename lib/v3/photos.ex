@@ -8,10 +8,10 @@ defmodule Meetup.V3.Photos do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/events/:event_id/photos/#list
   """
-  @spec index(String.t(), integer(), map()) :: tuple()
+  @spec index(String.t(), String.t(), map()) :: tuple()
   def index(urlname, event_id, params) do
-    method = :get
     path = "#{urlname}/events/#{event_id}/photos"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -19,10 +19,10 @@ defmodule Meetup.V3.Photos do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/events/:event_id/photos/#upload
   """
-  @spec upload(String.t(), integer(), map()) :: tuple()
+  @spec upload(String.t(), String.t(), map()) :: tuple()
   def upload(urlname, event_id, params) do
-    method = :post
     path = "#{urlname}/events/#{event_id}/photos"
+    Meetup.post(path, params)
   end
 
   @doc """
@@ -30,10 +30,10 @@ defmodule Meetup.V3.Photos do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/events/:event_id/photos/:photo_id/#get
   """
-  @spec show(String.t(), integer(), integer(), map()) :: tuple()
+  @spec show(String.t(), String.t(), integer(), map()) :: tuple()
   def show(urlname, event_id, photo_id, params) do
-    method = :get
     path = "#{urlname}/events/#{event_id}/photos/#{photo_id}"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -41,28 +41,28 @@ defmodule Meetup.V3.Photos do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/events/:event_id/photos/:photo_id/#edit
   """
-  @spec edit(String.t(), integer(), integer(), map()) :: tuple()
+  @spec edit(String.t(), String.t(), integer(), map()) :: tuple()
   def edit(urlname, event_id, photo_id, params) do
-    method = :patch
     path = "#{urlname}/events/#{event_id}/photos/#{photo_id}"
+    Meetup.patch(path, params)
   end
 
   @doc """
   Deletes a specified event photo.
   """
-  @spec delete(String.t(), integer(), integer()) :: tuple()
+  @spec delete(String.t(), String.t(), integer()) :: tuple()
   def delete(urlname, event_id, photo_id) do
-    method = :delete
     path = "#{urlname}/events/#{event_id}/photos/#{photo_id}"
+    Meetup.delete(path, %{})
   end
 
   @doc """
   Lists photo comments associated with a photo.
   """
-  @spec comments(String.t(), integer(), integer()) :: tuple()
+  @spec comments(String.t(), String.t(), integer()) :: tuple()
   def comments(urlname, event_id, photo_id) do
-    method = :get
     path = "#{urlname}/events/#{event_id}/photos/#{photo_id}/comments"
+    Meetup.get(path, %{})
   end
 
   @doc """
@@ -70,19 +70,19 @@ defmodule Meetup.V3.Photos do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/events/:event_id/photos/:photo_id/comments/#post
   """
-  @spec comment(String.t(), integer(), integer(), map()) :: tuple()
+  @spec comment(String.t(), String.t(), integer(), map()) :: tuple()
   def comment(urlname, event_id, photo_id, params) do
-    method = :post
     path = "#{urlname}/events/#{event_id}/photos/#{photo_id}/comments"
+    Meetup.post(path, params)
   end
 
   @doc """
   Deletes photo comments.
   """
-  @spec delete_comment(String.t(), integer(), integer(), integer()) :: tuple()
+  @spec delete_comment(String.t(), String.t(), integer(), integer()) :: tuple()
   def delete_comment(urlname, event_id, photo_id, comment_id) do
-    method = :delete
     path = "#{urlname}/events/#{event_id}/photos/#{photo_id}/comments/#{comment_id}"
+    Meetup.delete(path, %{})
   end
 
   @doc """
@@ -92,8 +92,8 @@ defmodule Meetup.V3.Photos do
   """
   @spec photo_albums(String.t(), map()) :: tuple()
   def photo_albums(urlname, params) do
-    method = :get
     path = "#{urlname}/photo_albums"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -101,10 +101,10 @@ defmodule Meetup.V3.Photos do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/photo_albums/:album_id/
   """
-  @spec photo_album(String.t(), integer()) :: tuple()
+  @spec photo_album(String.t(), integer(), map()) :: tuple()
   def photo_album(urlname, album_id, params) do
-    method = :get
     path = "#{urlname}/photo_albums/#{album_id}"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -114,8 +114,8 @@ defmodule Meetup.V3.Photos do
   """
   @spec photo_album_photos(String.t(), integer(), map()) :: tuple()
   def photo_album_photos(urlname, album_id, params) do
-    method = :get
     path = "#{urlname}/photo_albums/#{album_id}/photos"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -125,8 +125,8 @@ defmodule Meetup.V3.Photos do
   """
   @spec photo_album_photo_upload(String.t(), integer(), map()) :: tuple()
   def photo_album_photo_upload(urlname, album_id, params) do
-    method = :post
     path = "#{urlname}/photo_albums/#{album_id}/photos"
+    Meetup.post(path, params)
   end
 
   @doc """
@@ -136,8 +136,8 @@ defmodule Meetup.V3.Photos do
   """
   @spec group_index(String.t(), map()) :: tuple()
   def group_index(urlname, params) do
-    method = :get
     path = "#{urlname}/photos"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -147,8 +147,8 @@ defmodule Meetup.V3.Photos do
   """
   @spec member_photo_upload(integer(), map()) :: tuple()
   def member_photo_upload(member_id, params) do
-    method = :post
     path = "members/#{member_id}/photos"
+    Meetup.post(path, params)
   end
 
   @doc """
@@ -156,7 +156,7 @@ defmodule Meetup.V3.Photos do
   """
   @spec member_photo_delete(integer(), integer()) :: tuple()
   def member_photo_delete(member_id, photo_id) do
-    method = :delete
     path = "members/#{member_id}/photos/#{photo_id}"
+    Meetup.delete(path, %{})
   end
 end

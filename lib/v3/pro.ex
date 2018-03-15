@@ -10,8 +10,8 @@ defmodule Meetup.V3.Pro do
   """
   @spec groups(String.t(), map()) :: tuple()
   def groups(urlname, params) do
-    method = :get
     path = "pro/#{urlname}/groups"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -22,8 +22,8 @@ defmodule Meetup.V3.Pro do
   """
   @spec members(String.t(), map()) :: tuple()
   def members(urlname, params) do
-    method = :get
     path = "pro/#{urlname}/members"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -34,7 +34,7 @@ defmodule Meetup.V3.Pro do
   """
   @spec tickets(String.t(), map()) :: tuple()
   def tickets(urlname, params) do
-    method = :get
     path = "pro/#{urlname}/tickets"
+    Meetup.get(path, params)
   end
 end

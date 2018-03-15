@@ -11,8 +11,8 @@ defmodule Meetup.V3.Abuse do
   """
   @spec abuse_reports(String.t(), map()) :: tuple()
   def abuse_reports(urlname, %{type: abuse_type}) do
-    method = :post
     path = "#{urlname}/abuse_reports"
+    Meetup.post(path, %{type: abuse_type})
   end
 
   @doc """
@@ -25,9 +25,9 @@ defmodule Meetup.V3.Abuse do
   https://www.meetup.com/meetup_api/docs/self/abuse_reports/
   """
   @spec abuse_reports(map()) :: tuple()
-  def abuse_reports do
-    method = :post
+  def abuse_reports(params) do
     path = "self/abuse_reports"
+    Meetup.post(path, params)
   end
 
   @doc """
@@ -36,6 +36,16 @@ defmodule Meetup.V3.Abuse do
   @spec blocks(atom(), integer()) :: tuple()
   def blocks(:get, member_id) do
     path = "self/blocks/#{member_id}"
+    Meetup.get(path, %{})
+  end
+
+  @doc """
+  Unblocks a previously blocked member from various interactions with the authenticated member on the platform.
+  """
+  @spec blocks(atom(), integer()) :: tuple()
+  def blocks(:delete, member_id) do
+    path = "self/blocks/#{member_id}"
+    Meetup.delete(path, %{})
   end
 
   @doc """
@@ -47,13 +57,6 @@ defmodule Meetup.V3.Abuse do
   @spec blocks(atom(), integer(), map()) :: tuple()
   def blocks(:post, member_id, params) do
     path = "self/blocks/#{member_id}"
-  end
-
-  @doc """
-  Unblocks a previously blocked member from various interactions with the authenticated member on the platform.
-  """
-  @spec blocks(atom(), integer()) :: tuple()
-  def blocks(:delete, member_id) do
-    path = "self/blocks/#{member_id}"
+    Meetup.post(path, params)
   end
 end

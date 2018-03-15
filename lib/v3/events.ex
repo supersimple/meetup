@@ -10,8 +10,8 @@ defmodule Meetup.V3.Events do
   """
   @spec index(String.t(), map()) :: tuple()
   def index(urlname, params) do
-    method = :get
     path = "#{urlname}/events"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -21,26 +21,26 @@ defmodule Meetup.V3.Events do
   """
   @spec create(String.t(), map()) :: tuple()
   def create(urlname, params) do
-    method = :post
     path = "#{urlname}/events"
+    Meetup.post(path, params)
   end
 
   @doc """
   Closes rsvps for an event.
   """
-  @spec close_rsvps(String.t(), integer()) :: tuple()
+  @spec close_rsvps(String.t(), String.t()) :: tuple()
   def close_rsvps(urlname, event_id) do
-    method = :post
     path = "#{urlname}/events/#{event_id}/rsvps/close"
+    Meetup.post(path, %{})
   end
 
   @doc """
   Opens rsvps for an event.
   """
-  @spec open_rsvps(String.t(), integer()) :: type
+  @spec open_rsvps(String.t(), String.t()) :: tuple()
   def open_rsvps(urlname, event_id) do
-    method = :post
     path = "#{urlname}/events/#{event_id}/rsvps/open"
+    Meetup.post(path, %{})
   end
 
   @doc """
@@ -48,10 +48,10 @@ defmodule Meetup.V3.Events do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/events/:id/#get
   """
-  @spec show(String.t(), integer(), map()) :: tuple()
+  @spec show(String.t(), String.t(), map()) :: tuple()
   def show(urlname, event_id, params) do
-    method = :get
     path = "#{urlname}/events/#{event_id}"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -59,10 +59,10 @@ defmodule Meetup.V3.Events do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/events/:id/#edit
   """
-  @spec update(String.t(), integer(), map()) :: tuple()
+  @spec update(String.t(), String.t(), map()) :: tuple()
   def update(urlname, event_id, params) do
-    method = :patch
     path = "#{urlname}/events/#{event_id}"
+    Meetup.patch(path, params)
   end
 
   @doc """
@@ -70,10 +70,10 @@ defmodule Meetup.V3.Events do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/events/:id/#delete
   """
-  @spec delete(String.t(), integer(), map()) :: tuple()
+  @spec delete(String.t(), String.t(), map()) :: tuple()
   def delete(urlname, event_id, params) do
-    method = :delete
     path = "#{urlname}/events/#{event_id}"
+    Meetup.delete(path, params)
   end
 
   @doc """
@@ -82,9 +82,10 @@ defmodule Meetup.V3.Events do
   members of that group. The endpoint returns all members that have rsvped 'yes'
   or 'no' and members that were marked as either 'attended', 'noshow', or 'absent'.
   """
-  @spec attendance(atom(), String.t(), integer()) :: tuple()
+  @spec attendance(atom(), String.t(), String.t()) :: tuple()
   def attendance(:get, urlname, event_id) do
     path = "#{urlname}/events/#{event_id}/attendance"
+    Meetup.get(path)
   end
 
   @doc """
@@ -92,9 +93,10 @@ defmodule Meetup.V3.Events do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/events/:id/attendance/#edit
   """
-  @spec attendance(atom(), String.t(), integer(), map()) :: tuple()
+  @spec attendance(atom(), String.t(), String.t(), map()) :: tuple()
   def attendance(:post, urlname, event_id, params) do
     path = "#{urlname}/events/#{event_id}/attendance"
+    Meetup.post(path, params)
   end
 
   @doc """
@@ -105,10 +107,10 @@ defmodule Meetup.V3.Events do
   For available params, see:
   https://www.meetup.com/meetup_api/docs/:urlname/events/:id/payments/
   """
-  @spec payments(String.t(), integer(), map()) :: tuple()
+  @spec payments(String.t(), String.t(), map()) :: tuple()
   def payments(urlname, event_id, params) do
-    method = :post
     path = "#{urlname}/events/#{event_id}/payments"
+    Meetup.post(path, params)
   end
 
   @doc """
@@ -118,8 +120,8 @@ defmodule Meetup.V3.Events do
   """
   @spec upcoming_events(map()) :: tuple()
   def upcoming_events(params) do
-    method = :get
     path = "find/upcoming_events"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -129,8 +131,8 @@ defmodule Meetup.V3.Events do
   """
   @spec my_calendar(map()) :: tuple
   def my_calendar(params) do
-    method = :get
     path = "self/calendar"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -142,7 +144,7 @@ defmodule Meetup.V3.Events do
   https://www.meetup.com/meetup_api/docs/self/events/
   """
   def my_events(params) do
-    method = :get
     path = "self/events"
+    Meetup.get(path, params)
   end
 end

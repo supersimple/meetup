@@ -10,7 +10,7 @@ defmodule Meetup.V3.Geo do
   """
   @spec locations(map()) :: tuple
   def locations(params) do
-    method = :get
     path = "find/locations"
+    Meetup.get(path, params)
   end
 end

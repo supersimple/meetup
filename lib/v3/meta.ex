@@ -7,7 +7,7 @@ defmodule Meetup.V3.Meta do
   Returns the current API service status.
   """
   def status do
-    method = :get
     path = "status"
+    Meetup.get(path, %{})
   end
 end
