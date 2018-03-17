@@ -1,7 +1,7 @@
 defmodule Meetup do
   @moduledoc """
   API wrapper for Meetup.com public API.
-  Expect an env var named MEETUP_API_KEY to be set.
+  Expects an env var named MEETUP_API_KEY to be set.
   """
   @base_url "https://api.meetup.com"
 

@@ -10,8 +10,8 @@ defmodule Meetup.V3.Topics do
   """
   @spec categories(map()) :: tuple()
   def categories(params) do
-    method = :get
     path = "find/topics_categories"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -21,8 +21,8 @@ defmodule Meetup.V3.Topics do
   """
   @spec find(map()) :: tuple()
   def find(params) do
-    method = :get
     path = "find/topics"
+    Meetup.get(path, params)
   end
 
   @doc """
@@ -32,7 +32,7 @@ defmodule Meetup.V3.Topics do
   """
   @spec recommended(map()) :: tuple()
   def recommended(params) do
-    method = :get
     path = "recommended/group_topics"
+    Meetup.get(path, params)
   end
 end
