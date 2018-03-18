@@ -70,7 +70,7 @@ defmodule Meetup do
   defp format_return(body) do
     decoded_body = Jason.decode!(body)
 
-    if Map.has_key?(decoded_body, "errors") do
+    if is_map(decoded_body) && Map.has_key?(decoded_body, "errors") do
       {:error, Map.get(decoded_body, "errors")}
     else
       {:ok, body}
