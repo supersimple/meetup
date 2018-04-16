@@ -22,11 +22,14 @@ This package expects an env var named MEETUP_API_KEY to be set. You can get an A
 You can find documentation for the Meetup V3 documentation at: [https://www.meetup.com/meetup_api/docs/](https://www.meetup.com/meetup_api/docs/).
 
 ## Example Request
-`> Meetup.V3.Events.index("denverfp", %{})`
-`{:ok, ...}`
-
-`> Meetup.V3.Events.index("notavalidgroup", %{})`
 ```
+> Meetup.V3.Events.index("denverfp", %{})
+{:ok, ...}
+```
+
+```
+> Meetup.V3.Events.index("notavalidgroup", %{})
+
 {:error,
  [
    %{
