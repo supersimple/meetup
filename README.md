@@ -1,3 +1,5 @@
+![meetup logo](http://www.underconsideration.com/brandnew/archives/meetup_logo.png)
+
 # Meetup
 
 Elixir wrapper for the Meetup.com public API.
