@@ -13,3 +13,25 @@ def deps do
   ]
 end
 ```
+
+## Setup your meetup API key
+This package expects an env var named MEETUP_API_KEY to be set. You can get an API key at [https://secure.meetup.com/meetup_api/key/](https://secure.meetup.com/meetup_api/key/). You will need a Meetup.com account.
+
+
+## API Documentation
+You can find documentation for the Meetup V3 documentation at: [https://www.meetup.com/meetup_api/docs/](https://www.meetup.com/meetup_api/docs/).
+
+## Example Request
+`> Meetup.V3.Events.index("denverfp", %{})`
+`{:ok, ...}`
+
+`> Meetup.V3.Events.index("notavalidgroup", %{})`
+```
+{:error,
+ [
+   %{
+     "code" => "group_error",
+     "message" => "Invalid group urlname notavalidgroup"
+   }
+ ]}
+ ```
