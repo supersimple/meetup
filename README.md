@@ -1,4 +1,4 @@
-![meetup logo](http://www.underconsideration.com/brandnew/archives/meetup_logo.png)
+![meetup.com logo](http://www.underconsideration.com/brandnew/archives/meetup_logo.png)
 
 # Meetup
 
