@@ -2,6 +2,7 @@ defmodule Meetup do
   @moduledoc """
   API wrapper for Meetup.com public API.
   Expects an env var named MEETUP_API_KEY to be set.
+  * Note - This API is being deprecated by Meetup. The new one requires OAUTH *
   """
   @base_url "https://api.meetup.com"
 
