@@ -4,6 +4,7 @@ defmodule Meetup do
   Expects an env var named MEETUP_API_KEY to be set.
   * Note - This API is being deprecated by Meetup. The new one requires OAUTH *
   """
+
   @base_url "https://api.meetup.com"
 
   def get(path, opts \\ %{}) do
