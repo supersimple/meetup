@@ -4,6 +4,10 @@
 
 Elixir wrapper for the Meetup.com public API.
 
+## Notice
+
+This repo is looking for a new maintainer. If you are interested in taking over, please open a pull request saying so.
+
 ## Installation
 
 The package can be installed by adding `meetup` to your list of dependencies in `mix.exs`:
